@@ -1,0 +1,47 @@
+name: Build & Publish Pyodide Package Bundle
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Version Tag (Defaults to YYYYMMDD)
+        required: false
+        default: ""
+
+jobs:
+  pyodide-packages:
+    name: Build & Publish Pyodide Package Bundle
+    runs-on: ubuntu-latest
+    environment: r2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+
+      - name: Install dependencies
+        run: |
+          bash ./packages/setup.sh
+
+      - name: Build and Upload Pyodide Package Bundle
+        env: 
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        run: |
+          source .venv/bin/activate
+          source emsdk/emsdk_env.sh
+          cd packages
+          python3 script.py ${{ inputs.tag }}
+      
+      - name: Create GitHub Release for pyodide_bucket.bzl
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "pyodide_bucket.bzl"
+          token: ${{ secrets.MY_GITHUB_TOKEN }}
+          tag: ${{ inputs.tag }}
+          body: "Generated Bazel config file for release ${{ inputs.tag }}. Replace this file in workerd/build to update the Pyodide package bundle."
+          draft: false
+          prerelease: false

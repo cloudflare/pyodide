@@ -1,0 +1,35 @@
+package:
+  name: starlette
+  version: 0.36.3
+  top-level:
+    - starlette
+source:
+  url: https://files.pythonhosted.org/packages/eb/f7/372e3953b6e6fbfe0b70a1bb52612eae16e943f4288516480860fcd4ac41/starlette-0.36.3-py3-none-any.whl
+  sha256: 13d429aa93a61dc40bf503e8c801db1f1bca3dc706b10ef2434a36123568f044
+about:
+  home: ""
+  PyPI: https://pypi.org/project/starlette
+  summary: The little ASGI library that shines.
+  license: ""
+requirements:
+  run:
+    - anyio
+test:
+  imports:
+    - starlette
+    - starlette.applications
+    - starlette.authentication
+    - starlette.background
+    - starlette.concurrency
+    - starlette.config
+    - starlette.converters
+    - starlette.datastructures
+    - starlette.endpoints
+    - starlette.exceptions
+    - starlette.formparsers
+    - starlette.middleware
+    - starlette.middleware.base
+    - starlette.requests
+    - starlette.responses
+    - starlette.routing
+    - starlette.schemas

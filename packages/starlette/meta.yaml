@@ -22,7 +22,7 @@ test:
     - starlette.background
     - starlette.concurrency
     - starlette.config
-    - starlette.converters
+    - starlette.convertors
     - starlette.datastructures
     - starlette.endpoints
     - starlette.exceptions

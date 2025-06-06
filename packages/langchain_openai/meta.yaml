@@ -11,6 +11,7 @@ requirements:
     - numpy
     - openai
     - tiktoken
+    - langchain-core
 about:
   home: https://github.com/langchain-ai/langchain
   PyPI: https://pypi.org/project/langchain_openai

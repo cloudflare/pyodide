@@ -13,7 +13,6 @@ requirements:
     - typing-extensions
     - distro
     - anyio
-    - sniffio
     - jiter
 about:
   home: ""

@@ -6,6 +6,9 @@ package:
 source:
   url: https://files.pythonhosted.org/packages/61/ad/689f02752eeec26aed679477e80e632ef1b682313be70793d798c1d5fc8f/PyJWT-2.10.1-py3-none-any.whl
   sha256: dcdd193e30abefd5debf142f9adfcdd2b58004e644f25406ffaebd50bd98dacb
+requirements:
+  run:
+    - ssl
 about:
   home: null
   PyPI: https://pypi.org/project/PyJWT
